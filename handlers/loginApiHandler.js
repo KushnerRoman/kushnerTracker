@@ -2,6 +2,8 @@ const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
  // const emailInput = document.getElementById('email').value;
+
+ console.log('Login api handler before fetching')
   const passwordInput = document.getElementById('password').value;
 
   try {

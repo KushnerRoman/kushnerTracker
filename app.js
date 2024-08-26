@@ -17,7 +17,7 @@ const middleware = require('./middleware/middleware');
 middleware(app);
 
 
-app.use(express.static('public'))
+//app.use(express.static('public'))
 app.use('/', routes);
 app.use('/login',apiRoutes)
 
