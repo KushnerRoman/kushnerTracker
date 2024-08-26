@@ -5,8 +5,10 @@ const router = express.Router();
 router.post('/login', async (req,res)=>{
 
     const password = req.body;
+    console.log(`Login request received with password: ${password}`);
     const user = await  findUser.findUser(password); 
-        if(user){
+    if(user){
+        console.log(`Login request received  ####    O.K    ####`);
             return res.json({success : true});
         }
             return res.status(401).json({success : false , error : 'Invalid credentials'});

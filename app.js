@@ -18,10 +18,15 @@ middleware(app);
 
 
 //app.use(express.static('public'))
-app.use('/', routes);
 app.use('/login',apiRoutes)
+app.use('/', routes);
 
 
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  return res.status(500).json({ message: 'Internal Server Error' });
+});
 
 app.listen(PORT, () => {
   console.log(`port ${PORT}`);

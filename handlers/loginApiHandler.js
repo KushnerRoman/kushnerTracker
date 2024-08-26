@@ -1,10 +1,10 @@
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('myLoginForm');
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
  // const emailInput = document.getElementById('email').value;
 
  console.log('Login api handler before fetching')
-  const passwordInput = document.getElementById('password').value;
+  const passwordInput = document.getElementById('fpassword').value;
 
   try {
     const response = await fetch('/login', {
@@ -13,7 +13,7 @@ loginForm.addEventListener('submit', async (e) => {
       body: JSON.stringify({ password: passwordInput }),
     });
     const data = await response.json();
-    console.log(data); // Do something with the server's response
+    console.log(data); 
   } catch (error) {
     console.error(error);
   }

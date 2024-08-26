@@ -3,7 +3,6 @@ const path = require('path');
 
 module.exports = (app) => {
   const middlewareArray = [
-    express.static(path.join(__dirname, 'public')),
     express.json(),
     express.urlencoded({ extended: true })
   ];
