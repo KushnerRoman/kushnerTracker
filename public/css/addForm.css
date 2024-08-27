@@ -1,6 +1,16 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --text-color: #333;
+    --background-color: #ecf0f1;
+    --input-background: #f9f9f9;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,27 +21,31 @@ body {
 
 .container {
     background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
 }
 
 h2 {
     text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
 input[type="text"],
@@ -39,35 +53,107 @@ input[type="date"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
+    background-color: var(--input-background);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
 textarea {
     resize: vertical;
+    min-height: 100px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-add,
+.btn-reset {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-add {
-    display: block;
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    margin-right: 1rem;
 }
 
-.btn-add:hover {
-    background-color: #45a049;
+.btn-reset {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
 }
 
-@media (max-width: 480px) {
+.btn-add:hover,
+.btn-reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add:active,
+.btn-reset:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn-add,
+    .btn-reset {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
     .container {
         padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    textarea {
+        padding: 0.5rem;
     }
 }

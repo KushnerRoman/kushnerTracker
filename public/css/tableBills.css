@@ -17,6 +17,7 @@ body {
 h1 {
     text-align: center;
     color: #2c3e50;
+    margin-bottom: 1.5rem;
 }
 
 .table-responsive {
@@ -47,11 +48,30 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-.bills-table tr:nth-child(even) {
+.bills-table tbody tr:nth-child(even) {
     background-color: #f8f9fa;
 }
 
-.bills-table tr:hover {
+.bills-table tbody tr:hover {
+    background-color: #e8f4f8;
+}
+
+.bills-table tfoot {
+    font-weight: bold;
+}
+
+.bills-table tfoot .totals-header {
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.bills-table tfoot tr:nth-child(2) {
+    background-color: #ecf0f1;
+}
+
+.bills-table tfoot tr:last-child {
     background-color: #e8f4f8;
 }
 

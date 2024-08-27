@@ -7,12 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
   console.log('DOM fully loaded');
 
-
   const addBillForm = document.getElementById('add-bill-form');
-  console.log('Adding bill:', addBillForm);
+  
+  addBillForm.addEventListener('reset', async(e)=>{
+    e.preventDefault
+    window.location.href = '/bills'
+  })
+
   if (addBillForm) {
     addBillForm.addEventListener('submit', async (e) => {
-      
+      e.preventDefault
       console.log('Form submitted');
 
       const whoInput = document.getElementById('who').value;

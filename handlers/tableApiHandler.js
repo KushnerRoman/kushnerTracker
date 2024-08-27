@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded');
   
     fetchBillsData();
+    fetchTotals();
  
 });
 
@@ -21,6 +22,40 @@ async function fetchBillsData() {
   }
 }
 
+async function fetchTotals() {
+  try {
+      const response = await fetch('/bills/fetchTotalBills');
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      updateTotals(result);
+      console.log('######################################')
+      console.log( 'result filled ',result )
+  } catch (error) {
+      console.error('Error fetching totals:', error);
+  }
+}
+
+function updateTotals(totals) {
+  const totalsTableBody = document.getElementById('totalsTableBody');
+  totalsTableBody.innerHTML = ''; // Clear existing content
+
+  let grandTotal = 0;
+
+  totals.forEach(item => {
+      const cell = document.createElement('td');
+      cell.innerHTML = `<strong>${item.who}:</strong> ${parseFloat(item.total_amount).toFixed(2)}`;
+      totalsTableBody.appendChild(cell);
+      grandTotal += parseFloat(item.total_amount);
+  });
+
+  // Add grand total
+  const grandTotalCell = document.createElement('td');
+  grandTotalCell.innerHTML = `<strong>Total:</strong> ${grandTotal.toFixed(2)}`;
+  totalsTableBody.appendChild(grandTotalCell);
+}
+
 function displayBillsData(bills) {
   const container = document.querySelector('.container') || document.body;
   
@@ -28,18 +63,6 @@ function displayBillsData(bills) {
   const table = document.createElement('table');
   table.className = 'bills-table';
   
-  // Create table header
-  const thead = document.createElement('thead');
-  thead.innerHTML = `
-    <tr>
-      <th>Who</th>
-      <th>What</th>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Amount</th>
-    </tr>
-  `;
-  table.appendChild(thead);
   
   // Create table body and populate with data
   const tbody = document.createElement('tbody');
@@ -66,7 +89,7 @@ function formatDate(dateString) {
 }
 
 function formatAmount(amount) {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+  return new Intl.NumberFormat('en-US').format(amount);
 }
 
 function escapeHtml(unsafe) {
