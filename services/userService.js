@@ -1,9 +1,18 @@
 const db = require('../db/db');
 
 
-function findUser(email, password) {
-  const [rows] = db.execute('SELECT * FROM users WHERE email = ? AND password = ?', [email, password]);
-  return rows[0];
+async function findUser(password) {
+  try{
+  const result = await db.executeQuery('SELECT * FROM users WHERE  password = ?', password);
+  if (result) {
+    console.log('User found:', result);
+    return result;
+  } else {
+    console.log('No user found');
+  }
+} catch (error) {
+  console.error('Error executing query:', error);
+}
 }
 
 module.exports =  findUser ;

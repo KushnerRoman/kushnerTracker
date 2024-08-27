@@ -1,17 +1,22 @@
 const express = require('express');
-const path = require('path');
 
-module.exports = (app) => {
-  const middlewareArray = [
-    express.json(),
-    express.urlencoded({ extended: true })
-  ];
+// Custom logging middleware
+const loggingMiddleware = (req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url} `);
+  next();
+};
+
+// Middleware setup function
+const setupMiddleware = (app) => {
+  // Built-in middleware
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
   // Custom middleware
-  middlewareArray.push((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
-    next();
-  });
+  app.use(loggingMiddleware);
+};
 
-  return middlewareArray;
-}
+module.exports = {
+  setupMiddleware,
+  loggingMiddleware
+};
