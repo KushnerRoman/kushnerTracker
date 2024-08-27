@@ -10,8 +10,8 @@ router.get('/' , (req,res)=>{
 router.get('/index', pageController.getHomePage);
 router.get('/info', pageController.getInfoPage);
 router.get('/add', pageController.getAddPage);
-//router.get('/login', pageController.getLoginPage);
-
+router.get('/login', pageController.getLoginPage);
+router.get('/bills', pageController.getTableBillsPage);
 
 
 

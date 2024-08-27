@@ -41,29 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Login form not found');
   }
 
-  const button = document.querySelector('.enter_btn');
-  if(button){
-    button.addEventListener('click', async () => {
-      const passwordInput = document.getElementById('fpassword').value;
-      try {
-        const response = await fetch('/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: passwordInput }),
-        });
-        const data = await response.json();
-        if (data.success) {
-          window.location.href = data.redirectUrl;
-        } else {
-          console.error('Login failed:', data.error);
-          // Handle login failure (e.g., show an error message to the user)
-        }
-      } catch (error) {
-        console.error('Fetch error:', error);
-        // Handle network errors or other exceptions
-      }
-    });
-  }
+ 
 
 
 });

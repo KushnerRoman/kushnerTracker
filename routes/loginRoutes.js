@@ -14,13 +14,9 @@ router.post('/', async (req,res)=>{
     console.log(user)
     if(user){
         console.log(`Login request received  ####    O.K    ####`);
-        
-             return res.json({success: true, redirectUrl: '/index'});
-
+             return res.json({success: true, redirectUrl: '/add'});
         }else{
           return  res.status(401).json({success : false , error : 'Invalid credentials'});
         }
-
-
 })
 module.exports =  router ;
