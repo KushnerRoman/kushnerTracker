@@ -1,9 +1,9 @@
 const db = require('../db/db');
 
 
-async function findUser(password) {
+async function findUser(email,password) {
   try{
-  const result = await db.executeQuery('SELECT * FROM users WHERE  password = ?', [password]);
+  const result = await db.executeQuery('SELECT * FROM users WHERE email = ? and password = ?', [email,password]);
   if (result) {
     console.log('User found:', result);
     return result;

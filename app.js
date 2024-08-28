@@ -6,8 +6,9 @@ const routes = require('./index');
 const loginApiRoutes = require('./routes/loginRoutes')
 const tableApiRoutes =require ('./routes/tableBillsRoutes')
 const addApiRoutes = require('./routes/addRoutes')
+const cookieParser = require('cookie-parser');
 
-const { setupMiddleware, loginMiddleware } = require('./middleware/middleware');
+const { setupMiddleware, authMiddleware } = require('./middleware/middleware');
 const PORT = process.env.SERVER_PORT;
 const app = express();
 const  { queryCreateTable, queryCreateTableBill } = require('./db/db');
@@ -21,14 +22,15 @@ setupMiddleware(app);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/handlers',express.static(path.join(__dirname, 'handlers')));
 app.use(express.json());
+app.use(cookieParser());
 
 
 
 //app.use(express.static('public'))
 app.use('/login',loginApiRoutes);
-app.use('/add',addApiRoutes)
-app.use('/bills',tableApiRoutes)
-app.use('/', routes);
+app.use('/add',authMiddleware,addApiRoutes)
+app.use('/bills',authMiddleware,tableApiRoutes)
+app.use('/' ,routes);
 
 
 

@@ -8,6 +8,9 @@
         function redirectAddBtn(){
             window.location.href = '/add'
         }
+        function redirectInfoBtn(){
+            window.location.href  = '/bills'
+        }
     </script>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -16,8 +19,8 @@
         <h1>Kushner's house</h1>
         <div class="button-group">
             <button class="button button-add" id="addBtn" onclick="redirectAddBtn()">Add</button>
-            <button class="button button-info">Info</button>
-            <button class="button button-private" >Private</button>
+            <button class="button button-info" onclick="redirectInfoBtn()">Info</button>
+            
         </div>
     </div>
 </body>

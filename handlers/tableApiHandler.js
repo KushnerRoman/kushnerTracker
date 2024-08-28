@@ -5,8 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
   
     fetchBillsData();
     fetchTotals();
+
+
+    const addBtnRedirect = document.getElementById('addBtnRedirect')
+    if(addBtnRedirect){
+      console.log('from redirect to add')
+      addBtnRedirect.addEventListener('click', (e)=>{
+        e.preventDefault();
+        window.location.href = '/add';
+      })
+    }
  
 });
+
+
+
+
 
 async function fetchBillsData() {
   try {

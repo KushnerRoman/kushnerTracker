@@ -14,13 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Form submitted');
 
       const passwordInput = document.getElementById('fpassword').value;
+      const emailInput = document.getElementById('femail').value;
       console.log('Password input:', passwordInput);
+      console.log('email input:', emailInput);
 
       try {
         const response = await fetch('/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: passwordInput }),
+          body: JSON.stringify({ email:emailInput, password: passwordInput }),
         });
         const data = await response.json();
         console.log('Response data:', data);
