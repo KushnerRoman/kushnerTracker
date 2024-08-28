@@ -76,7 +76,7 @@ h1 {
 }
 .redirect-button {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 12px 18px;
     background-color: #4CAF50; /* A nice green color */
     color: white;
     text-decoration: none;
@@ -106,7 +106,7 @@ h1 {
 
 /* Add an icon (optional) */
 .redirect-button::before {
-    content: "+"; /* You can replace this with an icon using a custom font or background image */
+    content: ""; /* You can replace this with an icon using a custom font or background image */
     margin-right: 8px;
 }
 
