@@ -14,7 +14,11 @@ exports.getAddPage = (req, res) => {
 };
 
 exports.getLoginPage = (req,res)=>{
-    res.sendFile(path.join(__dirname, '../public/login.html'));
+  /* const token = req.cookies?.token;
+  if (!token) {
+    res.redirect('/index')
+  }  */
+  res.sendFile(path.join(__dirname, '../public/login.html'));
 };
 exports.getTableBillsPage = (req,res)=>{
   res.sendFile(path.join(__dirname, '../public/tableBills.html'));
