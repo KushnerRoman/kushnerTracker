@@ -23,7 +23,7 @@ const setupMiddleware = (app) => {
 };
 const authMiddleware = (req, res, next) => {
   const token = req.cookies?.token;
-  console.log('token : ', req.cookies)
+  
   
   if (!token) {
     res.redirect('/login')
@@ -32,8 +32,8 @@ const authMiddleware = (req, res, next) => {
   
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    console.log(decoded)
     req.user = decoded;
+    console.log('from middleware  ',req.user)
     
     next();
   } catch (error) {

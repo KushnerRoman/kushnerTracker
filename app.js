@@ -11,12 +11,18 @@ const cookieParser = require('cookie-parser');
 const { setupMiddleware, authMiddleware } = require('./middleware/middleware');
 const PORT = process.env.SERVER_PORT;
 const app = express();
-const  { queryCreateTable, queryCreateTableBill } = require('./db/db');
+const  { queryCreateTable, queryCreateTableBill, queryCreateTableCategory } = require('./db/db');
 
 queryCreateTable();
 queryCreateTableBill();
+queryCreateTableCategory();
 setupMiddleware(app);
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 
 app.use(express.static(path.join(__dirname, 'public')));

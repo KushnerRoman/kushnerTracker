@@ -1,10 +1,10 @@
 const db = require('../db/db');
 
 
-async function addBillForm(who,what,date,description,amount){
+async function addBillForm(who,what,date,description,amount,type){
     try{
-      const query = 'INSERT INTO bills (who, what, date, description, amount) VALUES (?, ?, ?, ?, ?)';
-      const parms = [who,what,date,description,amount]
+      const query = 'INSERT INTO bills (who, what, date, description, amount, type) VALUES (?, ?, ?, ?, ?, ?)';
+      const parms = [who,what,date,description,amount, type]
       const result = await db.executeQuery(query,parms);
       console.log('result:', result);
       if (result) {
