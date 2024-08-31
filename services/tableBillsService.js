@@ -30,4 +30,18 @@ async function fillTotalAmountTable() {
 }
 }
 
-module.exports =  { fillTable, fillTotalAmountTable } ;
+async function getCategoryNameAndUrl() {
+  try{
+  const result = await db.executeGetBillsQuery('SELECT  name, icon_url FROM category;' );
+ 
+  if (result) {
+    return result;
+  } else {
+    console.log('No data bills found');
+  }
+} catch (error) {
+  console.error('Error executing query:', error);
+}
+}
+
+module.exports =  { fillTable, fillTotalAmountTable, getCategoryNameAndUrl } ;

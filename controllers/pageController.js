@@ -10,6 +10,7 @@ exports.getInfoPage = (req, res) => {
 };
 
 exports.getAddPage = (req, res) => {
+  console.log('add html')
   res.sendFile(path.join(__dirname, '../public/add.html'));
 };
 

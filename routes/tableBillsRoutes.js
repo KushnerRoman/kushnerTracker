@@ -1,4 +1,4 @@
-const { fillTable, fillTotalAmountTable} = require('../services/tableBillsService');
+const { fillTable, fillTotalAmountTable, getCategoryNameAndUrl} = require('../services/tableBillsService');
 const express = require ('express');
 const router = express.Router();
 const pageController = require('../controllers/pageController');
@@ -31,6 +31,18 @@ router.get('/fetchTotalBills', async (req,res)=>{
         }else{
           return  res.status(401).json({success : false , error : 'Invalid credentials'});
         }
+})
+router.get('/category/fetchCategory', async (req,res)=>{
+
+  console.log('Table Category  request received');
+  const result = await  getCategoryNameAndUrl(); 
+ 
+  if(result){
+      console.log(`Table bills request received  ####    O.K    ####`);
+           return res.json(result);
+      }else{
+        return  res.status(401).json({success : false , error : 'Invalid credentials'});
+      }
 })
 
 

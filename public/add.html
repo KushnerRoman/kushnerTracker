@@ -8,31 +8,40 @@
     <link rel="stylesheet" href="/css/addForm.css">
 </head>
 <body>
-    <div class="container">
-        <form id="add-bill-form">
-            <h2>Add</h2>
-            <div class="form-group">
-                <label for="who">Who?</label>
-                <input type="text" id="who" name="who" required>
+    <div class="form-container">
+        <a href="#" class="back-arrow">←</a>
+        <h1>Add New Bill</h1>
+        <form id="billForm">
+            <div class="form-section">
+                <h2>Category</h2>
+                <div class="category-buttons" id="categoryButtons">
+                    <!-- Category buttons will be dynamically added here -->
+                </div>
             </div>
-            <div class="form-group">
-                <label for="what">What?</label>
-                <input type="text" id="what" name="what" required>
+            <div class="form-section">
+                <h2>Description</h2>
+                <input type="text" class="description-input" id="description" placeholder="Enter bill description">
             </div>
-            <div class="form-group">
-                <label for="date">When</label>
-                <input type="date" id="date" name="date" required>
+            <div class="form-section">
+                <div class="details-grid">
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input type="number" class="amount-input" id="amount" placeholder="0.00" step="10.00" >
+                    </div>
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div>
+                        <label>How?</label>
+                        <div class="payment-buttons">
+                            <button type="button" id="btn-card" class="payment-button" data-method="card">Card</button>
+                            <button type="button" id="btn-cash" class="payment-button" data-method="cash">Cash</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" rows="3" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount" step="1.00" required>
-            </div>
-            <button type="submit" id="addBtn" class="btn-add">Add</button>
-            <button type="reset" id="redirectBtn" class="btn-reset" >Info</button>
+            <button type="button" class="add-button" id="add-button">Add</button>
         </form>
     </div>
 </body>
