@@ -74,8 +74,6 @@ async function queryCreateTableCategory() {
 
 }
 
-
-
 async function executeQuery(query, params) {
   try {
     console.log('Executing query:', query, 'with params:', params);
@@ -103,18 +101,22 @@ async function executeQuery(query, params) {
     throw error;
   }
 }
-async function executeGetBillsQuery(query, params) {
+async function executeGetBillsQuery(query, [params]) {
   try {
     console.log('Executing query:', query);
     const [rows,fields ]= await pool.execute(query, params);
     
     // Check if result is undefined or null
     if (!rows) {
+    
       console.warn('Query returned undefined or null result');
       return null;
     }
 
+    console.log(rows)
+
     if (rows.length > 0) {
+      
       return rows; // Return the rows
     } else {
       return null; // Return null if no results
@@ -125,9 +127,33 @@ async function executeGetBillsQuery(query, params) {
   }
 }
 
+async function getAllTotals(query,params){
+try {
+  const [rows,fields ]= await pool.execute(query, params);
+          if (!rows) {
+            console.warn('Query returned undefined or null result');
+            return null;
+          }
+
+          if (rows.length > 0) {
+            return rows; // Return the rows
+          } else {
+            return null; // Return null if no results
+          }
+        
+
+  }  catch (error) {
+    console.error('Database query error:', error);
+    throw error;
+  }
+  
+
+
+}
+
 
 
 
 
   module.exports ={  queryCreateTable: queryCreateTableUser,
-     executeQuery, queryCreateTableBill, executeGetBillsQuery, queryCreateTableCategory }
+     executeQuery, queryCreateTableBill, executeGetBillsQuery, queryCreateTableCategory, getAllTotals }

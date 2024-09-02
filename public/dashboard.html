@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="../handlers/indexApiHandler.js" ></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hi, Welcome back 👋</h1>
+            <div class="date-download">
+                <span>Jan 20, 2023 - Feb 09, 2023</span>
+                <button>Download</button>
+            </div>
+        </header>
+
+        <div id="cards" class="overview">
+            <div id="total-card-month" class="card">
+                <h2>Total this month</h2>
+                <div class="total-month" id="total-month">
+                </div>
+                <span>+20.1% from last month</span>
+            </div>
+            <div class="card">
+                <h2>Wolt</h2>
+                <div id="total-wolt-month">
+                </div>
+                <span>+180.1% from last month</span>
+            </div>
+            <div class="card">
+                <h2>Sales</h2>
+                <div id="total-house-month">                    
+                </div>
+                <span>+19% from last month</span>
+            </div>
+            <div class="card">
+                <h2>Active Now</h2>
+                <p>+573</p>
+                <span>+201 since last hour</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="chart">
+                <h2>Bar Chart - Interactive</h2>
+                <p>Showing total visitors for the last 3 months</p>
+                <div class="visitor-count">
+                    <span>Desktop</span>
+                    <h3>24,828</h3>
+                    <span>Mobile</span>
+                    <h3>25,010</h3>
+                </div>
+                <div class="chart-bars">
+                    <!-- Replace with actual bar chart -->
+                    <img src="bar-chart-placeholder.jpg" alt="Bar Chart">
+                </div>
+            </div>
+
+            <div class="recent-sales">
+                <h2>Recent Sales</h2>
+                <p>You made 265 sales this month.</p>
+                <ul>
+                    <li>
+                        <span>OM</span>
+                        <div>
+                            <p>Olivia Martin</p>
+                            <p>olivia.martin@email.com</p>
+                        </div>
+                        <p>$1,999.00</p>
+                    </li>
+                    <li>
+                        <span>JL</span>
+                        <div>
+                            <p>Jackson Lee</p>
+                            <p>jackson.lee@email.com</p>
+                        </div>
+                        <p>$39.00</p>
+                    </li>
+                    <li>
+                        <span>IN</span>
+                        <div>
+                            <p>Isabella Nguyen</p>
+                            <p>isabella.nguyen@email.com</p>
+                        </div>
+                        <p>$299.00</p>
+                    </li>
+                    <li>
+                        <span>WK</span>
+                        <div>
+                            <p>William Kim</p>
+                            <p>will@email.com</p>
+                        </div>
+                        <p>$99.00</p>
+                    </li>
+                    <li>
+                        <span>SD</span>
+                        <div>
+                            <p>Sofia Davis</p>
+                            <p>sofia.davis@email.com</p>
+                        </div>
+                        <p>$39.00</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

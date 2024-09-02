@@ -4,15 +4,14 @@ const pageController = require('../controllers/pageController');
 
 router.get('/' , (req,res)=>{
     console.log('redirect to /index')
-    res.redirect('/index')
+    res.redirect('/dashboard')
 })
 
-router.get('/index', pageController.getHomePage);
+router.get('/dashboard', pageController.getDashPage);
 router.get('/info', pageController.getInfoPage);
 router.get('/add', pageController.getAddPage);
 router.get('/login', pageController.getLoginPage);
 router.get('/bills', pageController.getTableBillsPage);
-
 
 
 module.exports = router;

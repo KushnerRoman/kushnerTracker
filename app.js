@@ -6,6 +6,7 @@ const routes = require('./index');
 const loginApiRoutes = require('./routes/loginRoutes')
 const tableApiRoutes =require ('./routes/tableBillsRoutes')
 const addApiRoutes = require('./routes/addRoutes')
+const dashboardApiRoutes = require('./routes/dashboardRoutes')
 const cookieParser = require('cookie-parser');
 
 const { setupMiddleware, authMiddleware } = require('./middleware/middleware');
@@ -36,6 +37,7 @@ app.use(cookieParser());
 app.use('/login',loginApiRoutes);
 app.use('/add',authMiddleware,addApiRoutes)
 app.use('/bills',authMiddleware,tableApiRoutes)
+app.use('/dashboard', authMiddleware ,dashboardApiRoutes)
 app.use('/' ,routes);
 
 

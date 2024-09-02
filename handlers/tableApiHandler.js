@@ -79,7 +79,7 @@ function displayBillsData(bills) {
   
   
   // Create table body and populate with data
-  const tbody = document.createElement('tbody');
+  const tbody = document.getElementById('billsTableBody');
   bills.forEach(bill => {
     const row = document.createElement('tr');
     row.innerHTML = `

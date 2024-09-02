@@ -32,7 +32,7 @@ async function fillTotalAmountTable() {
 
 async function getCategoryNameAndUrl() {
   try{
-  const result = await db.executeGetBillsQuery('SELECT  name, icon_url FROM category;' );
+  const result = await db.executeGetBillsQuery('SELECT  name, icon_url FROM category;',[] );
  
   if (result) {
     return result;
