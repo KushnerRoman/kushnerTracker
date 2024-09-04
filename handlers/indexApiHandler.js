@@ -3,7 +3,43 @@
 document.addEventListener('DOMContentLoaded', () => {
       fetchTotalCategories()
       fetchTableRecents()
+      addCurrentDate();
         
+
+      const btnRedirectAdd = document.getElementById('btn-redirect-add');
+      const btnRedirectAll = document.getElementById('btn-redirect-all');
+      
+      if (btnRedirectAdd) {
+          btnRedirectAdd.addEventListener('click', () => {
+              window.location.href = '/add'; // Replace with your actual URL
+          });
+      }
+  
+      if (btnRedirectAll) {
+          btnRedirectAll.addEventListener('click', () => {
+              window.location.href = '/bills'; // Replace with your actual URL
+          });
+      }
+  
+      // Handle any other actions if needed
+      const redirectionAction = document.getElementById('date-download');
+      if (redirectionAction) {
+          redirectionAction.addEventListener('click', () => {
+              // Add any specific action you want here
+              console.log('Date download clicked');
+          });
+      }
+
+
+      function addCurrentDate(){
+        const getCurrentDate =()=> new Date().toLocaleString('en-GB', {day: '2-digit', month: '2-digit', year: '2-digit'}).replace(/\//g, '/');
+        const dateDownloadDiv = document.getElementById('date-download');
+        const span = document.createElement('span');
+       //TODO : create durrent date
+        // span.textContent = getCurrentDate;
+        //dateDownloadDiv.appendChild(span)
+      }
+    
 
         async function fetchTotalCategories(){
             const response = await fetch('/dashboard/totals');
@@ -18,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayTotalWolt(total)
             displayTotalHouse(total)
             displayTotalUtilities(total)
+            displayTotalWedding(total)
         }
         async function fetchTableRecents(){
             const tableRecents = document.getElementById('recent-sales');
@@ -78,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('total-house-month') || document.body;
             const p = document.createElement('p');
            
-            const shoppingResult = result.filter(item => item.what ===  'קניות');   
+            const shoppingResult = result.filter(item => item.what ===  'בית');   
             console.log('shopping : ', shoppingResult)
             const pTotal= shoppingResult[0].total_amount;
             
@@ -102,21 +139,80 @@ document.addEventListener('DOMContentLoaded', () => {
             
             
         }
+
+        function displayTotalWedding(total){
+          
+            const result = total;
+            const container = document.getElementById('total-weddings') || document.body;
+            const p = document.createElement('p');
+           
+            const utilitiesResult = result.filter(item => item.what ===  'חתונה');   
+            console.log('Wedding : ', utilitiesResult)
+            const pTotal= utilitiesResult[0].total_amount;
+            
+            p.textContent = `${pTotal} ₪`;
+            container.appendChild(p);
+            
+            
+        }
         function dislayTableRecent(table){
             console.log('the recents tables !', table)
             const tableRecents= document.getElementById('table-recents-li');
+
+            const list = document.getElementById('table-recents-li');
+            
+
+
             table.forEach( t => {
-                const list = document.createElement('li');
+                const item = document.createElement('div');
+                const date = new Date(t.date) 
+                const day = date.getUTCDate().toString().padStart(2, '0');
+                const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+
+                item.className = 'receive-item';
+               /*  const divAva = document.createComment('div');
+                        divAva.className = 'avatar';
+                const divDet = document.createElement('div'); 
+                        divAva.className = 'details'         
+                const divName = document.createElement('div');
+                        divName.className = 'name'  
+                const divEmail = document.createElement('div');
+                        divEmail.className = 'email'
+                const divAmount = document.createElement('div');
+                        divAmount.className = 'amount'  
+                        
+                 divDet.appendChild(divName);       
+                 divDet.appendChild(divEmail);
+                 divAva.append(divDet);  
+                 tableRecents.append(item);    */  
+
+                item.innerHTML = `
+                    <div class="avatar">${t.what.charAt(0)}</div>
+                    <div class="details">
+                        <div class="name">${day}/${month}</div>
+                        <div class="email">${t.description}</div>
+                    </div>
+                    <div class="amount">-₪ ${t.amount}</div>
+                `;
+                tableRecents.append(item); 
+                
+
+
+
+              /*   const list = document.createElement('li');
                 const span = document.createElement('span');
                 const div = document.createElement('div');
                 const pdate = document.createElement('p');
                 const pone = document.createElement('p'); 
                 const pamount = document.createElement('p'); 
-
-                const date = t.date;
                 
-                console.log(date)
-                pdate.textContent = `${t.date}`;
+                const date = new Date(t.date) 
+                const day = date.getUTCDate().toString().padStart(2, '0');
+                const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+               
+                
+                console.log(`${day}/${month}`)
+                pdate.textContent = `${day}/${month}`;
                 pone.textContent = `${t.description}`;
                 pamount.textContent = `${t.amount}₪`;
                 span.textContent = `${t.what}`
@@ -127,7 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 list.appendChild(span);
                 list.appendChild(div);
                 list.appendChild(pamount);
-                tableRecents.appendChild(list);
+ */
+
+
+
+                //tableRecents.appendChild(list);
 
             })
 

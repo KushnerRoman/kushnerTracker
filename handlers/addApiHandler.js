@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   addCategoryButtons();
+
   setTimeout(() => {
     console.log('DOM fully loaded');
   }, 100);
   console.log('DOM fully loaded');
+
 
 
   const paymentButtons = document.querySelectorAll('.payment-button');
@@ -33,10 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 
+  const backArrow = document.querySelector('.back-arrow');
+  if (backArrow) {
+      backArrow.addEventListener('click', (event) => {
+          event.preventDefault(); // Prevent the default anchor behavior
+          window.location.href = '/dashboard'; // Redirect to the dashboard
+      });
+  }
+
+
 
   const confirmForm = document.getElementById('add-button')
   if (confirmForm) {
     confirmForm.addEventListener('click', async (e) => {
+      e.preventDefault();
 
       console.log('Form submitted ####################################');
       e.preventDefault
@@ -79,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Fetch error:', error);
         // Handle network errors or other exceptions
       } 
+
+      addBillForm.reset();
     }); 
   } else {
     console.error('Add form not found');

@@ -11,9 +11,10 @@
     <div class="container">
         <header>
             <h1>Hi, Welcome back 👋</h1>
-            <div class="date-download">
-                <span>Jan 20, 2023 - Feb 09, 2023</span>
-                <button>Download</button>
+            <div id="date-download" class="date-download">
+                
+                <button type="button" id='btn-redirect-add'><h2>ADD</h2></button>
+                <button type="button" id="btn-redirect-all"><h2>ALL</h2></button>
             </div>
         </header>
 
@@ -44,31 +45,40 @@
                 
                 <span></span>
             </div>
+            <div class="card">
+                <h2>Wedding</h2>
+                <div id='total-weddings'>
+
+                </div>
+                
+                <span></span>
+            </div>
+
         </div>
 
         <div class="content">
-            <div class="chart">
-                <h2>Bar Chart - Interactive</h2>
-                <p>Showing total visitors for the last 3 months</p>
-                <div class="visitor-count">
-                    <span>Desktop</span>
-                    <h3>24,828</h3>
-                    <span>Mobile</span>
-                    <h3>25,010</h3>
-                </div>
-                <div class="chart-bars">
-                    <!-- Replace with actual bar chart -->
-                    <img src="bar-chart-placeholder.jpg" alt="Bar Chart">
-                </div>
+            <!--
+                <div class="chart">
+                    <h2>Bar Chart - Interactive - Future </h2>
+                    <div class="visitor-count">
+                        <span>Desktop</span>
+                        <h3>24,828</h3>
+                        <span>Mobile</span>
+                        <h3>25,010</h3>
+                    
+                    </div>
+                    <div class="chart-bars">
+                    </div>
+                    -->
+                    
             </div>
             <div class="recent-sales">
-                <h2>Recent recives</h2>
-                <p>You made 265 sales this month.</p>
-                <ul>
-                <div id="table-recents-li">
+                <h2>Recent Receives</h2>
+                
+                <div id="table-recents-li" class="recent-receives-list">
                       
                     </div>
-                </ul>
+                
             </div>
         </div>
     </div>

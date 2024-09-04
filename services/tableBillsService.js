@@ -3,7 +3,7 @@ const db = require('../db/db');
 
 async function fillTable() {
   try{
-  const result = await db.executeGetBillsQuery('SELECT * FROM bills',[] );
+  const result = await db.executeGetBillsQuery('SELECT * FROM bills ORDER BY date DESC',[] );
   console.log('Table filled:', result);
   if (result) {
     console.log('Table filled with', result.length, 'rows');
@@ -18,7 +18,7 @@ async function fillTable() {
 
 async function fillTotalAmountTable() {
   try{
-  const result = await db.executeGetBillsQuery('SELECT  who, SUM(amount) AS total_amount FROM bills GROUP BY who;' );
+  const result = await db.executeGetBillsQuery('SELECT  who, SUM(amount) AS total_amount FROM bills GROUP BY who;',[] );
   console.log('Table filled:', result);
   if (result) {
     return result;
