@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 
-  const backArrow = document.querySelector('.back-arrow');
+  const backArrow = document.getElementById('redirect-button');
   if (backArrow) {
       backArrow.addEventListener('click', (event) => {
           event.preventDefault(); // Prevent the default anchor behavior

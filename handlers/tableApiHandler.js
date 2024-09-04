@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addBtnRedirect = document.getElementById('addBtnRedirect')
     if(addBtnRedirect){
-       ('from redirect to add')
+     
       addBtnRedirect.addEventListener('click', (e)=>{
         e.preventDefault();
         window.location.href = '/add';
