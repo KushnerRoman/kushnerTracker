@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (btnRedirectAdd) {
           btnRedirectAdd.addEventListener('click', () => {
-              window.location.href = '/add'; // Replace with your actual URL
+              window.location.href = '/add'; 
           });
       }
   
       if (btnRedirectAll) {
           btnRedirectAll.addEventListener('click', () => {
-              window.location.href = '/bills'; // Replace with your actual URL
+              window.location.href = '/bills'; 
           });
       }
   
