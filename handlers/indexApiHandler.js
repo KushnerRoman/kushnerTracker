@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayTotalHouse(total)
             displayTotalUtilities(total)
             displayTotalWedding(total)
+            displayTotalShopping(total)
         }
         async function fetchTableRecents(){
             const tableRecents = document.getElementById('recent-sales');
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('total-utilities-month') || document.body;
             const p = document.createElement('p');
            
-            const utilitiesResult = Array.isArray(result) ?result.filter(item => item.what ===  'חשבונות') : [];   
+            const utilitiesResult = Array.isArray(result) ? result.filter(item => item.what ===  'חשבונות') : [];   
              console.log('Utilities : ', utilitiesResult);
              var pTotal = '0' ;
              if (utilitiesResult.length === 0) {
@@ -157,6 +158,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const pTotal= weddingResult[0].total_amount;
             
             p.textContent = `${pTotal} ₪`;
+            container.appendChild(p);
+            
+            
+        }
+        function displayTotalShopping(total){
+          
+            const result = total;
+            const container = document.getElementById('total-shopping') || document.body;
+            const p = document.createElement('p');
+           
+            const shoppingResult = Array.isArray(result) ? result.filter(item => item.what ===  'שופינג') :[];  
+       
+            var sTotal = '0' ;
+            if(shoppingResult.length === 0){
+                 sTotal = '0' ;
+            }else{
+                 sTotal= shoppingResult[0].total_amount;
+            }
+            
+            p.textContent = `${sTotal} ₪`;
             container.appendChild(p);
             
             
