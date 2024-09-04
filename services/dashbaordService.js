@@ -36,4 +36,29 @@ async function fillTotals(userId){
   console.error('Error executing query:', error);
 }
 }
-module.exports = { fillTotals } ;
+
+async function fillTableRecents(userId){
+    try {
+        const parms = [userId];
+        const query = ` SELECT  *,
+                    DATE_FORMAT(date, '%d-/m') AS formatted_date
+                        FROM tracker.bills 
+                        WHERE who = ? 
+                        ORDER BY date DESC
+                `;
+                console.log(parms)
+        const result = await db.executeGetBillsQuery(query,[parms] );
+
+        if(result){
+            console.log( 'the result : ',result)
+            return result
+        }else{
+            console.log('Error from service result', result);
+            return null;
+        }
+
+    }catch (error) {
+  console.error('Error executing query:', error);
+}
+}
+module.exports = { fillTotals, fillTableRecents } ;

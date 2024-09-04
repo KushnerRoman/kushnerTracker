@@ -6,7 +6,7 @@ const pageController = require('../controllers/pageController');
 router.get('/',pageController.getAddPage);
 
 router.post('/addnewbill', async (req,res)=>{
-
+  try{
     const { what, data, describe, amount, type } =req.body;
     console.log('req,user : ' , req.user)
     const who = req.user.userId;
@@ -19,5 +19,9 @@ router.post('/addnewbill', async (req,res)=>{
         }else{
           return  res.status(401).json({success : false , error : 'Invalid credentials'});
         }
+  }catch{
+    return null;
+  }
+   
 })
 module.exports =  router ;

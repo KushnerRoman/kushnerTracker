@@ -26,6 +26,8 @@ app.use((req, res, next) => {
 });
 
 
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/handlers',express.static(path.join(__dirname, 'handlers')));
 app.use(express.json());
