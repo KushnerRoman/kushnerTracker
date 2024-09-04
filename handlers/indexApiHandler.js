@@ -130,10 +130,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('total-utilities-month') || document.body;
             const p = document.createElement('p');
            
-            const utilitiesResult = result.filter(item => item.what ===  'חשבונות');   
-             ('shopping : ', utilitiesResult)
-            const pTotal= utilitiesResult[0].total_amount;
-            
+            const utilitiesResult = Array.isArray(result) ?result.filter(item => item.what ===  'חשבונות') : [];   
+             console.log('Utilities : ', utilitiesResult);
+             var pTotal = '0' ;
+             if (utilitiesResult.length === 0) {
+                 pTotal= 0;
+                } else {
+                pTotal= utilitiesResult[0].total_amount;
+            }
+             
             p.textContent = `${pTotal} ₪`;
             container.appendChild(p);
             
@@ -146,9 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('total-weddings') || document.body;
             const p = document.createElement('p');
            
-            const utilitiesResult = result.filter(item => item.what ===  'חתונה');   
-             ('Wedding : ', utilitiesResult)
-            const pTotal= utilitiesResult[0].total_amount;
+            const weddingResult = result.filter(item => item.what ===  'חתונה');  
+       
+            console.log('Wedding : ', weddingResult)
+            const pTotal= weddingResult[0].total_amount;
             
             p.textContent = `${pTotal} ₪`;
             container.appendChild(p);
