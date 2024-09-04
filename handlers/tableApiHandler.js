@@ -1,7 +1,7 @@
-console.log('Table API Handler script started');
+ ('Table API Handler script started');
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded');
+   ('DOM fully loaded');
   
     fetchBillsData();
     fetchTotals();
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addBtnRedirect = document.getElementById('addBtnRedirect')
     if(addBtnRedirect){
-      console.log('from redirect to add')
+       ('from redirect to add')
       addBtnRedirect.addEventListener('click', (e)=>{
         e.preventDefault();
         window.location.href = '/add';
@@ -44,8 +44,8 @@ async function fetchTotals() {
       }
       const result = await response.json();
       updateTotals(result);
-      console.log('######################################')
-      console.log( 'result filled ',result )
+       ('######################################')
+       ( 'result filled ',result )
   } catch (error) {
       console.error('Error fetching totals:', error);
   }
@@ -83,12 +83,12 @@ function displayBillsData(bills) {
   bills.forEach(bill => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${escapeHtml(bill.who)}</td>
-      <td>${escapeHtml(bill.what)}</td>
-      <td>${formatDate(bill.date)}</td>
-      <td>${escapeHtml(bill.description)}</td>
-      <td>${formatAmount(bill.amount)}</td>
-    `;
+    <td data-label="Who">${escapeHtml(bill.who)}</td>
+    <td data-label="What">${escapeHtml(bill.what)}</td>
+    <td data-label="When">${formatDate(bill.date)}</td>
+    <td data-label="Description">${escapeHtml(bill.description)}</td>
+    <td data-label="Amount">${formatAmount(bill.amount)}</td>
+  `;
     tbody.appendChild(row);
   });
   table.appendChild(tbody);

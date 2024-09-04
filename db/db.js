@@ -12,7 +12,7 @@ const pool =mysql.createPool({
 
 async function queryCreateTableUser() {
   
-    console.log("queryCreateTable ")
+    ("queryCreateTable ")
     const query = `
       CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +23,7 @@ async function queryCreateTableUser() {
     `;
     try{
       await pool.execute(query);
-      console.log('Table User created successfully');
+      ('Table User created successfully');
     }catch(err){
       console.error('Error creating table:', err);
     }
@@ -32,7 +32,7 @@ async function queryCreateTableUser() {
 }
 async function queryCreateTableBill() {
   
-  console.log("queryCreateTableBill ")
+  ("queryCreateTableBill ")
   const query = `
     CREATE TABLE IF NOT EXISTS bills (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,7 +46,7 @@ async function queryCreateTableBill() {
   `;
   try{
     await pool.execute(query);
-    console.log('Table Bill created successfully');
+    ('Table Bill created successfully');
   }catch(err){
     console.error('Error creating table:', err);
   }
@@ -55,7 +55,7 @@ async function queryCreateTableBill() {
 }
 async function queryCreateTableCategory() {
   
-  console.log("queryCreateTableCategory ")
+  ("queryCreateTableCategory ")
   const query = `
     CREATE TABLE IF NOT EXISTS category (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -66,7 +66,7 @@ async function queryCreateTableCategory() {
   `;
   try{
     await pool.execute(query);
-    console.log('Table Category created successfully');
+    ('Table Category created successfully');
   }catch(err){
     console.error('Error creating table:', err);
   }
@@ -76,9 +76,9 @@ async function queryCreateTableCategory() {
 
 async function executeQuery(query, params) {
   try {
-    console.log('Executing query:', query, 'with params:', params);
+
     const [rows,fields ]= await pool.execute(query, params);
-    console.log('Query fields result:', rows.insertId);
+
     
 
     // Check if result is undefined or null
@@ -103,7 +103,7 @@ async function executeQuery(query, params) {
 }
 async function executeGetBillsQuery(query, [params]) {
   try {
-    console.log('Executing query:', query);
+    ('Executing query:', query);
     const [rows,fields ]= await pool.execute(query, params);
     
     // Check if result is undefined or null
@@ -113,7 +113,7 @@ async function executeGetBillsQuery(query, [params]) {
       return null;
     }
 
-    console.log(rows)
+    (rows)
 
     if (rows.length > 0) {
       

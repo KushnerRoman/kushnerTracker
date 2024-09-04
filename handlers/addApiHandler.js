@@ -1,6 +1,4 @@
 
-
-console.log('Script started');
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('date').valueAsDate = new Date();
   const addBillForm = document.getElementById('billForm');
@@ -11,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
   addCategoryButtons();
 
   setTimeout(() => {
-    console.log('DOM fully loaded');
+     ('DOM fully loaded');
   }, 100);
-  console.log('DOM fully loaded');
+   ('DOM fully loaded');
 
 
 
@@ -23,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         paymentButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         selectedPaymentMethod = button.dataset.method;
-        console.log('Selected payment method:', selectedPaymentMethod);
+         ('Selected payment method:', selectedPaymentMethod);
     });
   });
   const categoryClickedButtons = document.querySelectorAll('.category-button');
@@ -50,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmForm.addEventListener('click', async (e) => {
       e.preventDefault();
 
-      console.log('Form submitted ####################################');
+       ('Form submitted ####################################');
       e.preventDefault
-      console.log('Form submitted ####################################');
+       ('Form submitted ####################################');
 
     
       
@@ -61,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const dateInput = document.getElementById('date').value;
 
       const descriptionInput = document.getElementById('description').value;
-      console.log(amount)
+       (amount)
 
       const amountInput = document.getElementById('amount').value;
 
       
-      console.log('what input:', whatInput);
-      console.log('date input:', dateInput);
-      console.log('description input:', descriptionInput);
-      console.log('amount input:', amountInput);
+       ('what input:', whatInput);
+       ('date input:', dateInput);
+       ('description input:', descriptionInput);
+       ('amount input:', amountInput);
 
     try {
         const response = await fetch('/add/addnewbill', {
@@ -84,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     }),
         });
         const data = await response.json();
-        console.log('Response data:', data);
+         ('Response data:', data);
 
        
       } catch (error) {
@@ -107,7 +105,7 @@ async function addCategoryButtons() {
         if(!response.ok){
             throw new Error(`HTTP ERROR! from addCategoryButtons !  Status ${response.status}`)
           }
-        console.log('fetching fetchCategory ')
+         ('fetching fetchCategory ')
         const categories = await response.json();
               categories.forEach(category => {
                   const button = document.createElement('button');
@@ -141,7 +139,7 @@ async function addCategoryButtons() {
                         const button = e.target.closest('.category-button');
                         selectedCategory = button.dataset.categoryName;
                       }
-                  console.log('Selected category from fetchingCategory:', button.dataset.categoryName);
+                   ('Selected category from fetchingCategory:', button.dataset.categoryName);
                   button.classList.add('active');
                   });
                   categoryContainer.appendChild(button);

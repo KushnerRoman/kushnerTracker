@@ -21,14 +21,14 @@ async function fillTotals(userId){
                 ORDER BY 
                     what ASC, total_amount DESC
                 `;
-                console.log(parms)
+                 (parms)
         const result = await db.executeGetBillsQuery(query,[parms] );
 
         if(result){
-            console.log( 'the result : ',result)
+             ( 'the result : ',result)
             return result
         }else{
-            console.log('Error from service result', result);
+             ('Error from service result', result);
             return null;
         }
 
@@ -46,14 +46,14 @@ async function fillTableRecents(userId){
                         WHERE who = ? 
                         ORDER BY date DESC
                 `;
-                console.log(parms)
+                 (parms)
         const result = await db.executeGetBillsQuery(query,[parms] );
 
         if(result){
-            console.log( 'the result : ',result)
+             ( 'the result : ',result)
             return result
         }else{
-            console.log('Error from service result', result);
+             ('Error from service result', result);
             return null;
         }
 

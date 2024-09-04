@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (redirectionAction) {
           redirectionAction.addEventListener('click', () => {
               // Add any specific action you want here
-              console.log('Date download clicked');
+               ('Date download clicked');
           });
       }
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }
 
             const total =   await response.json();
-            console.log('######################## : ', total);
+             ('######################## : ', total);
             displayTotal(total)
             displayTotalWolt(total)
             displayTotalHouse(total)
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
            try{
                const woltResult = result.filter(item => item.what === 'הזמנות');   
                if (woltResult.length > 0 ){
-                   console.log('wolt : ', woltResult)
+                    ('wolt : ', woltResult)
                    const pTotal= woltResult[0].total_amount;
                    p.textContent = `${pTotal} ₪`;
                    
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                container.appendChild(p);
 
            }catch (err){
-            console.log('err', err)
+             ('err', err)
            }
             
             
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const p = document.createElement('p');
            
             const shoppingResult = result.filter(item => item.what ===  'בית');   
-            console.log('shopping : ', shoppingResult)
+             ('shopping : ', shoppingResult)
             const pTotal= shoppingResult[0].total_amount;
             
             p.textContent = `${pTotal} ₪`;
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const p = document.createElement('p');
            
             const utilitiesResult = result.filter(item => item.what ===  'חשבונות');   
-            console.log('shopping : ', utilitiesResult)
+             ('shopping : ', utilitiesResult)
             const pTotal= utilitiesResult[0].total_amount;
             
             p.textContent = `${pTotal} ₪`;
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const p = document.createElement('p');
            
             const utilitiesResult = result.filter(item => item.what ===  'חתונה');   
-            console.log('Wedding : ', utilitiesResult)
+             ('Wedding : ', utilitiesResult)
             const pTotal= utilitiesResult[0].total_amount;
             
             p.textContent = `${pTotal} ₪`;
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
         function dislayTableRecent(table){
-            console.log('the recents tables !', table)
+             ('the recents tables !', table)
             const tableRecents= document.getElementById('table-recents-li');
 
             const list = document.getElementById('table-recents-li');
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
                
                 
-                console.log(`${day}/${month}`)
+                 (`${day}/${month}`)
                 pdate.textContent = `${day}/${month}`;
                 pone.textContent = `${t.description}`;
                 pamount.textContent = `${t.amount}₪`;

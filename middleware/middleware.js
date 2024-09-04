@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 // Custom logging middleware
 const loggingMiddleware = (req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url} `);
+   (`${new Date().toISOString()} - ${req.method} ${req.url} `);
   next();
 };
 
@@ -33,12 +33,12 @@ const authMiddleware = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
-    console.log('from middleware  ',req.user)
+     ('from middleware  ',req.user)
     
     next();
   } catch (error) {
     
-      console.log('redirect to /index')
+       ('redirect to /index')
       res.redirect('/login')
  
     //return res.status(401).json({ message: 'Invalid token' });

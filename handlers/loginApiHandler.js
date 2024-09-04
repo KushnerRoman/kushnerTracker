@@ -1,22 +1,22 @@
-console.log('Script started');
+ ('Script started');
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    console.log('DOM fully loaded');
+     ('DOM fully loaded');
   }, 100);
-  console.log('DOM fully loaded');
+   ('DOM fully loaded');
 
 
   const loginForm = document.getElementById('myLoginForm');
-  console.log('Login form:', loginForm);
+   ('Login form:', loginForm);
   if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      console.log('Form submitted');
+       ('Form submitted');
 
       const passwordInput = document.getElementById('fpassword').value;
       const emailInput = document.getElementById('femail').value;
-      console.log('Password input:', passwordInput);
-      console.log('email input:', emailInput);
+       ('Password input:', passwordInput);
+       ('email input:', emailInput);
 
       try {
         const response = await fetch('/login', {
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ email:emailInput, password: passwordInput }),
         });
         const data = await response.json();
-        console.log('Response data:', data);
+         ('Response data:', data);
 
         if (data.success) {
-          console.log('Login successful, redirecting to:', data.redirectUrl);
+           ('Login successful, redirecting to:', data.redirectUrl);
           window.location.href = data.redirectUrl;
         } else {
           console.error('Login failed:', data.error);

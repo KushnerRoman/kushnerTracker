@@ -8,7 +8,7 @@ router.get('/', pageController.getDashPage);
 
 router.get('/totals', async (req, res) => {
     try {
-        const userId = req.user.userId; // Assuming you have authentication middleware setting this
+        const userId = req.user.email; // Assuming you have authentication middleware setting this
         if (!userId) {
             return res.status(401).json({ success: false, error: 'User not authenticated' });
         }
@@ -16,8 +16,8 @@ router.get('/totals', async (req, res) => {
         const totals = await fillTotals(userId);
         
         if (totals) {
-            console.log(`Dashboard total request received #### O.K ####`);
-            console.log('Totals:', totals);
+             (`Dashboard total request received #### O.K ####`);
+             ('Totals:', totals);
             return res.json(totals);
         } else {
             return res.status(404).json({ success: false, error: 'No data found' });
@@ -30,13 +30,13 @@ router.get('/totals', async (req, res) => {
 
 router.get('/recentsreceivs', async (req, res) => {
     try {
-        const userId = req.user.userId; // Assuming you have authentication middleware setting this
+        const userId = req.user.email; // Assuming you have authentication middleware setting this
         if (!userId) {
             return res.status(401).json({ success: false, error: 'User not authenticated' });
         }
 
         const totals = await fillTableRecents(userId);
-            console.log(totals);
+             (totals);
         if (totals) {
             return res.json(totals);
         } else {
