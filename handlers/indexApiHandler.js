@@ -130,9 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = total;
             const container = document.getElementById('total-utilities-month') || document.body;
             const p = document.createElement('p');
-           
             const utilitiesResult = Array.isArray(result) ? result.filter(item => item.what ===  'חשבונות') : [];   
-             console.log('Utilities : ', utilitiesResult);
+            console.log('Utilities : ', utilitiesResult);
+           
              var pTotal = '0' ;
              if (utilitiesResult.length === 0) {
                  pTotal= 0;
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
             var sTotal = '0' ;
             if(shoppingResult.length === 0){
-                 sTotal = '0' ;
+                 sTotal = 0 ;
             }else{
                  sTotal= shoppingResult[0].total_amount;
             }
