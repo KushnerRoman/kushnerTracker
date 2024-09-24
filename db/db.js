@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise')
-const logger = require('./logger'); 
+const logger = require('../logger'); 
 
 const pool =mysql.createPool({
   user : process.env.MYSQL_USER, 
