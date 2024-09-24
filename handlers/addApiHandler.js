@@ -86,14 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
        
       } catch (error) {
-        console.error('Fetch error:', error);
+         logger.info('Fetch error:', error);
         // Handle network errors or other exceptions
       } 
 
       addBillForm.reset();
     }); 
   } else {
-    console.error('Add form not found');
+     logger.info('Add form not found');
   }
 
 async function addCategoryButtons() {
@@ -145,7 +145,7 @@ async function addCategoryButtons() {
                   categoryContainer.appendChild(button);
               });
      }catch(error){
-        console.error('Error fetching category data:', error);
+         logger.info('Error fetching category data:', error);
      }
 }
 

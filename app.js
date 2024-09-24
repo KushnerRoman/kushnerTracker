@@ -8,7 +8,7 @@ const tableApiRoutes =require ('./routes/tableBillsRoutes')
 const addApiRoutes = require('./routes/addRoutes')
 const dashboardApiRoutes = require('./routes/dashboardRoutes')
 const cookieParser = require('cookie-parser');
-
+const logger = require('./logger');
 const { setupMiddleware, authMiddleware } = require('./middleware/middleware');
 const PORT = process.env.SERVER_PORT;
 const app = express();
@@ -60,7 +60,7 @@ app.use('/' ,routes);
 
 
 app.use((err, req, res, next) => {
-  console.error(err);
+   logger.info(err);
   return res.status(500).json({ message: 'Internal Server Error' });
 });
 

@@ -4,7 +4,7 @@ const router = express.Router();
 const pageController = require('../controllers/pageController');
 //TODO : change to index
 router.get('/', pageController.getDashPage);
-
+const logger = require('./logger');
 
 router.get('/totals', async (req, res) => {
     try {
@@ -23,7 +23,7 @@ router.get('/totals', async (req, res) => {
             return res.status(404).json({ success: false, error: 'No data found' });
         }
     } catch (error) {
-        console.error('Error in /totals route:', error);
+         logger.info('Error in /totals route:', error);
         return res.status(500).json({ success: false, error: 'Server error' });
     }
 });
@@ -43,7 +43,7 @@ router.get('/recentsreceivs', async (req, res) => {
             return res.status(404).json({ success: false, error: 'No data found' });
         }
     } catch (error) {
-        console.error('Error in /recentsreceivs route:', error);
+         logger.info('Error in /recentsreceivs route:', error);
         return res.status(500).json({ success: false, error: 'Server error' });
     }
 });

@@ -1,5 +1,5 @@
 const db = require('../db/db');
-
+const logger = require('./logger');
 
 async function fillTable() {
   try{
@@ -12,7 +12,7 @@ async function fillTable() {
      ('No data bills found');
   }
 } catch (error) {
-  console.error('Error executing query:', error);
+   logger.info('Error executing query:', error);
 }
 }
 
@@ -26,7 +26,7 @@ async function fillTotalAmountTable() {
      ('No data bills found');
   }
 } catch (error) {
-  console.error('Error executing query:', error);
+   logger.info('Error executing query:', error);
 }
 }
 
@@ -40,7 +40,7 @@ async function getCategoryNameAndUrl() {
      ('No data bills found');
   }
 } catch (error) {
-  console.error('Error executing query:', error);
+   logger.info('Error executing query:', error);
 }
 }
 

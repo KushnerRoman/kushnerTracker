@@ -1,5 +1,5 @@
 const db = require('../db/db');
-
+const logger = require('./logger');
 
 async function addBillForm(who,what,date,description,amount,type){
     try{
@@ -14,7 +14,7 @@ async function addBillForm(who,what,date,description,amount,type){
            ('No bill added');
         }
       } catch (error) {
-        console.error('Error executing query:', error);
+         logger.info('Error executing query:', error);
       }
 }
 module.exports = addBillForm ;

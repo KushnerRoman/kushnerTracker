@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise')
-
+const logger = require('./logger'); 
 
 const pool =mysql.createPool({
   user : process.env.MYSQL_USER, 
@@ -23,9 +23,9 @@ async function queryCreateTableUser() {
     `;
     try{
       await pool.execute(query);
-      ('Table User created successfully');
+      logger.info('Table User created successfully');
     }catch(err){
-      console.error('Error creating table:', err);
+      logger.info('Error creating table:', err);
     }
     pool.releaseConnection();
   
@@ -48,7 +48,7 @@ async function queryCreateTableBill() {
     await pool.execute(query);
     ('Table Bill created successfully');
   }catch(err){
-    console.error('Error creating table:', err);
+     logger.info('Error creating table:', err);
   }
   pool.releaseConnection();
 
@@ -68,7 +68,7 @@ async function queryCreateTableCategory() {
     await pool.execute(query);
     ('Table Category created successfully');
   }catch(err){
-    console.error('Error creating table:', err);
+     logger.info('Error creating table:', err);
   }
   pool.releaseConnection();
 
@@ -97,7 +97,7 @@ async function executeQuery(query, params) {
       return null; // Return null if no results
     }
   } catch (error) {
-    console.error('Database query error:', error);
+     logger.info('Database query error:', error);
     throw error;
   }
 }
@@ -122,7 +122,7 @@ async function executeGetBillsQuery(query, [params]) {
       return null; // Return null if no results
     }
   } catch (error) {
-    console.error('Database query error:', error);
+     logger.info('Database query error:', error);
     throw error;
   }
 }
@@ -143,7 +143,7 @@ try {
         
 
   }  catch (error) {
-    console.error('Database query error:', error);
+     logger.info('Database query error:', error);
     throw error;
   }
   

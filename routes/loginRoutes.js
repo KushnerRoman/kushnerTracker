@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const pageController = require('../controllers/pageController');
 const JWT_SECRET = process.env.JWT_SECRET;
 router.get('/', pageController.getLoginPage);
-
+const logger = require('./logger');
 
 router.post('/', async (req,res)=>{
 
@@ -14,7 +14,7 @@ router.post('/', async (req,res)=>{
     const user = await  findUser(email,password); 
      (user)
     if(user){
-         (`Login request received  ####    O.K    ####`);
+         logger.info(`Login request received  ####    O.K    ####`);
         const token = jwt.sign(
           { userId: user.id, email: user.email },
           JWT_SECRET,
@@ -30,6 +30,7 @@ router.post('/', async (req,res)=>{
        (`Login successful for user: ${email}`);
              return res.json({success: true, redirectUrl: '/add'});
         }else{
+          logger.info()
           return  res.status(401).json({success : false , error : 'Invalid credentials'});
         }
 })

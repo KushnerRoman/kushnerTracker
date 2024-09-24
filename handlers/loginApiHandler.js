@@ -25,22 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ email:emailInput, password: passwordInput }),
         });
         const data = await response.json();
-         ('Response data:', data);
-
+         logger.info('Response data:', data);
+          console.log('Response data:', data);
         if (data.success) {
-           ('Login successful, redirecting to:', data.redirectUrl);
+             logger.info('Login successful, redirecting to:', data.redirectUrl);
           window.location.href = data.redirectUrl;
         } else {
-          console.error('Login failed:', data.error);
+           logger.info('Login failed:', data.error);
           // TODO : Handle login failure (e.g., show an error message to the user)
         }
       } catch (error) {
-        console.error('Fetch error:', error);
+         logger.info('Fetch error:', error);
         // Handle network errors or other exceptions
       }
     });
   } else {
-    console.error('Login form not found');
+     logger.info('Login form not found');
   }
 
  

@@ -1,5 +1,5 @@
 const db = require('../db/db');
-
+const logger = require('./logger'); 
 
 async function fillTotals(userId){
     try {
@@ -33,7 +33,7 @@ async function fillTotals(userId){
         }
 
     }catch (error) {
-  console.error('Error executing query:', error);
+   logger.info('Error executing query:', error);
 }
 }
 
@@ -58,7 +58,7 @@ async function fillTableRecents(userId){
         }
 
     }catch (error) {
-  console.error('Error executing query:', error);
+   logger.info('Error executing query:', error);
 }
 }
 module.exports = { fillTotals, fillTableRecents } ;
