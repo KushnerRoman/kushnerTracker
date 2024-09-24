@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 const corsOptions = {
   origin: function (origin, callback) {
-    const whitelist = ['http://localhost:8080','https://tracker.kushner-tracker.com/'];
+    const whitelist = ['http://localhost:8080','https://tracker.kushner-tracker.com'];
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
