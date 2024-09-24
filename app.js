@@ -26,7 +26,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const whitelist = ['http://localhost:8080', 'https://your-frontend-domain.com'];
+const whitelist = ['http://localhost:8080', 'https://tracker.kushner-tracker.com/','http://localhost:3000',];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
