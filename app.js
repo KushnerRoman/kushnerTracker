@@ -12,6 +12,7 @@ const cookieParser = require('cookie-parser');
 const { setupMiddleware, authMiddleware } = require('./middleware/middleware');
 const PORT = process.env.SERVER_PORT;
 const app = express();
+const cors = require('cors');
 const  { queryCreateTable, queryCreateTableBill, queryCreateTableCategory } = require('./db/db');
 
 queryCreateTable();
@@ -25,6 +26,20 @@ app.use((req, res, next) => {
   next();
 });
 
+const whitelist = ['http://localhost:8080', 'https://your-frontend-domain.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 
 
