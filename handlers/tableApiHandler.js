@@ -31,7 +31,7 @@ async function fetchBillsData() {
     const bills = await response.json();
     displayBillsData(bills);
   } catch (error) {
-     logger.info('Error fetching bills data:', error);
+    console.log('Error fetching bills data:', error);
     displayErrorMessage('Failed to load bills data. Please try again later.');
   }
 }
@@ -47,7 +47,7 @@ async function fetchTotals() {
        ('######################################')
        ( 'result filled ',result )
   } catch (error) {
-       logger.info('Error fetching totals:', error);
+    console.log('Error fetching totals:', error);
   }
 }
 

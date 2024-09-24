@@ -1,5 +1,5 @@
 const db = require('../db/db');
-const logger = require('./logger');
+const logger = require('../logger');
 
 async function addBillForm(who,what,date,description,amount,type){
     try{

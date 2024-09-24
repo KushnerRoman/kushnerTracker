@@ -2,7 +2,7 @@ const addBillForm = require('../services/addBillService');
 const express = require ('express');
 const router = express.Router();
 const pageController = require('../controllers/pageController');
-
+const logger = require('../logger');
 router.get('/',pageController.getAddPage);
 
 router.post('/addnewbill', async (req,res)=>{

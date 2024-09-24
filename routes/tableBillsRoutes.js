@@ -2,7 +2,7 @@ const { fillTable, fillTotalAmountTable, getCategoryNameAndUrl} = require('../se
 const express = require ('express');
 const router = express.Router();
 const pageController = require('../controllers/pageController');
-
+const logger = require('../logger');
 
 router.get('/', pageController.getTableBillsPage);
 

@@ -4,7 +4,7 @@ const router = express.Router();
 const pageController = require('../controllers/pageController');
 //TODO : change to index
 router.get('/', pageController.getDashPage);
-const logger = require('./logger');
+const logger = require('../logger');
 
 router.get('/totals', async (req, res) => {
     try {
