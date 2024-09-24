@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const pageController = require('../controllers/pageController');
 const JWT_SECRET = process.env.JWT_SECRET;
 router.get('/', pageController.getLoginPage);
-const logger = require('./logger');
+const logger = require('../logger');
 
 router.post('/', async (req,res)=>{
 
