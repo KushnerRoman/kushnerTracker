@@ -3,7 +3,7 @@ const router = express.Router();
 const pageController = require('../controllers/pageController');
 
 router.get('/' , (req,res)=>{
-     ('redirect to /index')
+    
     res.redirect('/dashboard')
 })
 

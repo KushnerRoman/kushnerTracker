@@ -2,7 +2,8 @@ const path = require('path');
 
 exports.getHomePage = (req, res) => {
   
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
+ 
 };
 
 exports.getDashPage = (req, res) => {
@@ -10,11 +11,11 @@ exports.getDashPage = (req, res) => {
 };
 
 exports.getInfoPage = (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/info.html'));
+  res.sendFile(path.join(__dirname, '../public/table.html'));
 };
 
 exports.getAddPage = (req, res) => {
-   ('add html')
+   
   res.sendFile(path.join(__dirname, '../public/add.html'));
 };
 
